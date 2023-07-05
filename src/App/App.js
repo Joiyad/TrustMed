@@ -1,6 +1,4 @@
-import { Button } from '@mui/material';
-import './App.scss';
-import { Home } from './pages';
+import { Home, VerificationForm } from '../pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -9,8 +7,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/verify" element={<Home />} />
-          <Route exact path="/register" element={<Home />} />
+          <Route exact path="/verify" element={<VerificationForm />} />
         </Routes>
       </BrowserRouter>
     </>
