@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Home, VerificationForm } from '../pages';
+import { Error404, Home, RetailerRegistration, VerificationForm } from '../pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Web3 from 'web3'
 import detectEthereumProvider from '@metamask/detect-provider'
@@ -49,7 +49,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
           <Route exact path="/verify" element={<VerificationForm />} />
-          <Route exact path="*" element={<VerificationForm />} />
+          <Route exact path="/register" element={<RetailerRegistration isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
+          <Route exact path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </>

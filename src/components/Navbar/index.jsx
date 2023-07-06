@@ -59,7 +59,7 @@ const Navbar = ({ isConnected, connectWallet, account }) => {
                 Trustmed
               </Typography>
               <Link to="/" className={styles.link}>
-                <Typography variant="h6" sx={{margin:'0 2vw', color:'#1976d2', fontWeight:'450'}}>Home</Typography>
+                <Button variant="contained">Home</Button>
               </Link>
               {isConnected ? (
                 <Button variant="outlined" sx={{maxWidth:"400px", overflow:'hidden', fontWeight:'450'}}><Typography variant="body2">{account}</Typography></Button>
