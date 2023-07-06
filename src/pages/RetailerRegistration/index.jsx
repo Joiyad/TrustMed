@@ -5,10 +5,9 @@ import { Button, TextField, Typography } from '@mui/material'
 import Lottie from 'lottie-react'
 import Animation from '../../assets/animations/107800-login-leady.json'
 
-const RetailerRegistration = ({isConnected, account, connectWallet}) => {
+const RetailerRegistration = ({isConnected, account, connectWallet, web3Api}) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
-  const [address, setAddress] = useState(null);
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -19,9 +18,11 @@ const RetailerRegistration = ({isConnected, account, connectWallet}) => {
   }
 
   const handleSubmit = () => {
-    setAddress(account);
-    if(address === null) window.alert('address is invalid');
-    else console.log(name + " " + location);
+    if(account === null) window.alert('address is invalid, Reconnect to Metamask');
+    else{
+      web3Api.contract.createRetailer(account, name, location);
+      console.log(name+location);
+    }
   }
 
   return (
@@ -38,7 +39,7 @@ const RetailerRegistration = ({isConnected, account, connectWallet}) => {
         <div className={styles.form_container}>
           <TextField placeholder='Enter your name...' onChange={handleName}/>
           <TextField placeholder='Enter your location...' onChange={handleLocation}/>
-          <Button variant='contained' onClick={handleSubmit}>Submit</Button>
+          <Button variant='contained' size='large' onClick={handleSubmit}>Submit</Button>
         </div>
       </div>
     </>
