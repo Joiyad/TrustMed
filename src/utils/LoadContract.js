@@ -1,7 +1,7 @@
 import {ethers} from 'ethers';
 import abi from './Trustmed.json'
 
-const ContractAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+const ContractAddress = '0x2F178fcF0b73F54ec580314DEf4a41adF8049F42';
 const ContractAbi = abi.abi;
 
 export default function loadContract(ethereum){

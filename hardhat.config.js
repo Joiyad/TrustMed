@@ -16,6 +16,15 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+
+const INFURA_API_KEY = "d1a1dd5d792848f18d7e36c464385f56";
+const SEPOLIA_PRIVATE_KEY = "9a3cc719c830caae9e2dc71cfa234db1cc62faf493c790f131e7b7c6a83b24eb";
 module.exports = {
   solidity: "0.8.4",
+  networks: {
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [SEPOLIA_PRIVATE_KEY]
+    }
+  }
 };

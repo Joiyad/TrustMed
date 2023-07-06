@@ -49,7 +49,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
           <Route exact path="/verify" element={<VerificationForm />} />
-          <Route exact path="/register" element={<RetailerRegistration isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
+          <Route exact path="/register" element={<RetailerRegistration isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
