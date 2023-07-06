@@ -3,9 +3,9 @@
 pragma solidity >=0.7.0 <0.9.0;
 pragma experimental ABIEncoderV2;
 
-contract Identify{
+contract Trustmed{
     // address of owner
-    address owner;
+    address public admin;
 
     // various details related to medicine from which unique code will be generated
     // data types are strictly defined for low deployment cost
@@ -19,16 +19,7 @@ contract Identify{
         string manufLocation;
         string manufTimestamp;
         address owner;
-        address[] customers;
-    }
-
-    // details of customers
-    struct customerObj{
-        address customerAddress;
-        string name;
-        string phone;
-        string[] code;
-        bool isPresent;
+        address[] allOwners;
     }
 
     // details of retailer
@@ -36,12 +27,25 @@ contract Identify{
         address retailerAddress;
         string name;
         string location;
+        bool isPresent;
     }
 
     // mapping 
     mapping (string => medicineObj) medicines;
-    mapping (address => customerObj) customers;
     mapping (address => retailerObj) retailers;
+
+    // construction for superadmin
+    constructor(){
+        admin = msg.sender;
+    }
+
+    // function for identifying retailer
+    function isRetailer() external view returns(bool){
+        if(retailers[msg.sender].retailerAddress == msg.sender){
+            return true;
+        }
+        else return false;
+    }
 
     // function for creating unique code for each object
     function generateCode(string memory _code, uint _status, string memory _brand, string memory _model, string memory _description, string memory _manufName, string memory _manufLocation, string memory _manufTimestamp) public payable returns(uint){
@@ -72,36 +76,23 @@ contract Identify{
     // // function for creating a new retailer
     function addRetailerToCode(string memory _code, address _address) public payable returns(uint) {
         medicines[_code].owner = _address;
+        medicines[_code].allOwners.push(_address);
         return 1;
     }
 
-    // // function for creating a new customer
-    function createCustomer(address _address, string memory _name, string memory _phone) public payable returns(bool){
-        if(customers[_address].isPresent){
+    // function for creating a retailer  
+    function createRetailer(address _retailerAddress, string memory _name, string memory _location) public payable returns(bool){
+        if(retailers[_retailerAddress].isPresent){
             return false;
         }
-
-        customerObj memory customer;
-        customer.name = _name;
-        customer.phone = _phone;
-        customer.isPresent = true;
-        customers[_address] = customer;
-        return true;
-    }
-
-    // function for getting customer details, here code is email
-    function getCustomerDetails(address _address) public view returns(string memory, string memory){
-        return (customers[_address].name, customers[_address].phone);
-    }
-
-    // function for creating a retailer  
-    function createRetailer(address _retailerAddress, string memory _name, string memory _location) public payable returns(uint){
+        
         retailerObj memory retailer;
         retailer.retailerAddress = _retailerAddress;
         retailer.name = _name;
         retailer.location = _location;
+        retailer.isPresent = true;
         retailers[_retailerAddress] = retailer;
-        return 1;
+        return true;
     }
 
     // function for getting retailer details, here code is address
@@ -109,16 +100,13 @@ contract Identify{
         return (retailers[_address].name, retailers[_address].location);
     }
 
-    // only owner can transfer ownership
-    modifier onlyOwner(string memory _code){
-        require(medicines[_code].owner == msg.sender, "Only owner can tranfer ownership");
-        _;
-    }
-
     // function for transferring ownership
     function transferOwnership(string memory _code, address _newOwner) public payable returns(uint) {
-        medicines[_code].owner = _newOwner;
-        return 1;
+        if(medicines[_code].owner == msg.sender){
+            medicines[_code].owner = _newOwner;
+            return 1;
+        }
+        return 0;
     }
 
     // function for initial owner
