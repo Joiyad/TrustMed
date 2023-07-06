@@ -3,18 +3,9 @@
     height: 100%;
     justify-content: space-evenly;
 
-    .text_container{
+    .animation_container{
         max-width: 800px;
         padding-top: 5%;
-
-        .text_section{
-            padding: 5%;
-        }
-
-        .button_container{
-            display: flex;
-            gap: 20px;
-        }
     }
 
     .lottie_container{
@@ -23,5 +14,13 @@
         @media only screen and (max-width: 1040px) {
             display: none;
         }
+    }
+
+    .form_container{
+        padding: 5%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
     }
 }
