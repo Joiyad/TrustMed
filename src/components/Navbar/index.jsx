@@ -12,6 +12,7 @@ import {
 import Metamask from "../../assets/images/metamask.svg";
 import Trustmed from "../../assets/images/trustmed.png";
 import { Link } from "react-router-dom";
+import styles from './Styles.module.scss'
 
 const Navbar = ({ isConnected, connectWallet, account }) => {
   const theme = createTheme({
@@ -39,7 +40,7 @@ const Navbar = ({ isConnected, connectWallet, account }) => {
           <AppBar
             position="static"
             sx={{
-              background: "none",
+              background: "#F5F6F6",
               boxShadow: "none",
               m: "0",
               fontFamily: "BlinkMacSystemFont",
@@ -51,24 +52,25 @@ const Navbar = ({ isConnected, connectWallet, account }) => {
                 <img alt="logo" src={Trustmed} width="40px" />
               </Box>
               <Typography
-                variant="h6"
+                variant="h5"
                 component="div"
-                sx={{ flexGrow: 1, color: "plum" }}
+                sx={{ flexGrow: 1, color: "#F739E1" }}
               >
                 Trustmed
               </Typography>
-              <Link to="/">
-                <Button sx={{margin:'0 2vw'}}>Home</Button>
+              <Link to="/" className={styles.link}>
+                <Typography variant="h6" sx={{margin:'0 2vw', color:'#1976d2', fontWeight:'450'}}>Home</Typography>
               </Link>
               {isConnected ? (
-                <Button variant="outlined" sx={{maxWidth:"400px", overflow:'hidden'}}>{account}</Button>
+                <Button variant="outlined" sx={{maxWidth:"400px", overflow:'hidden', fontWeight:'450'}}><Typography variant="body2">{account}</Typography></Button>
               ) : (
                 <Button
                   startIcon={<img alt="logo" src={Metamask} width="20px"/>}
                   variant="outlined"
+                  size="md"
                   onClick={connectWallet}
                 >
-                  Connect
+                  <Typography sx={{fontWeight:'450'}}>Connect</Typography>
                 </Button>
               )}
             </Toolbar>
