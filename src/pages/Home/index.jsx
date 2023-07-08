@@ -31,6 +31,15 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
       account && checkAccount();
     }
   }
+
+  const handleVerify = () => {
+    if(!isConnected){
+      window.alert("Connect Metamask");
+    }
+    else{
+      navigate("/verify-product");
+    }
+  }
   
   return (
     <>
@@ -49,7 +58,7 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
             <br />
             <div className={styles.button_container}>
               <Button size="large" variant="contained" onClick={handleRegister}>Register</Button>
-              <Link to="/verify-product"><Button size="large" variant="outlined">Verify Product</Button></Link>
+              <Button size="large" variant="outlined" onClick={handleVerify}>Verify Product</Button>
             </div>
           </div>
         </div>

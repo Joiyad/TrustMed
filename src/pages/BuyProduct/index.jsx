@@ -28,7 +28,7 @@ const SellProduct = ({isConnected, connectWallet, account, web3Api}) => {
       <div className={styles.container}>
         <div className={styles.animation_container}>
           <Typography variant="h3">Welcome</Typography>
-          <Typography variant="h5" sx={{color:'#7F7E7F'}}>Sell product by transfering ownership</Typography>
+          <Typography variant="h5" sx={{color:'#7F7E7F'}}>Send a buy request to owner</Typography>
           <br />
           <div className={styles.lottie_container}>
             <Lottie animationData={Animation} />

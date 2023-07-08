@@ -15,7 +15,7 @@ const Retailer = ({ isConnected, account, connectWallet }) => {
           text="Welcome, Select what you want to perform"
           button1="Buy a product"
           button2="See Requests"
-          path1="/add-product"
+          path1="/buy-product"
           path2="/requests"
         />
       </div>

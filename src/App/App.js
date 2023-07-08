@@ -51,7 +51,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
-          <Route exact path="/verify-product" element={<VerificationForm web3Api={web3Api} account={account}/>} />
+          <Route exact path="/verify-product" element={<VerificationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="/add-manufacturer" element={<ManufacturerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="/manufacturer" element={<Manufacturer isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
           <Route exact path="/retailer" element={<Retailer isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
