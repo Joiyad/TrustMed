@@ -59,11 +59,10 @@ contract Trustmed{
         if(manufacturers[_manufacturerAddress].isPresent){
             return false;
         }
-        manufacturerObj memory manufacturer;
+        manufacturerObj storage manufacturer = manufacturers[_manufacturerAddress] ;
         manufacturer.manufacturerAddress = _manufacturerAddress;
         manufacturer.name = _name;
         manufacturer.location = _location;
-        manufacturers[_manufacturerAddress] = manufacturer;
         return true;
     }
 
@@ -97,16 +96,15 @@ contract Trustmed{
 
     // function for creating unique code for each object
     function generateCode(string memory _code, uint _status, string memory _brand, string memory _model, string memory _description, string memory _manufName, string memory _manufLocation, string memory _manufTimestamp) public payable returns(uint){
-        medicineObj memory medicine;
-        medicine.status = _status;
+        medicineObj storage medicine = medicines[_code];
         medicine.brand = _brand;
+        medicine.status = _status;
         medicine.model = _model;
         medicine.description = _description;
         medicine.manufName = _manufName;
         medicine.manufLocation = _manufLocation;
         medicine.manufTimestamp = _manufTimestamp;
         medicine.owner = msg.sender;
-        medicines[_code] = medicine;
         initialOwner(_code);
         return 1;
     }
@@ -134,12 +132,11 @@ contract Trustmed{
             return false;
         }
         
-        retailerObj memory retailer;
+        retailerObj storage retailer = retailers[_retailerAddress];
         retailer.retailerAddress = _retailerAddress;
         retailer.name = _name;
         retailer.location = _location;
         retailer.isPresent = true;
-        retailers[_retailerAddress] = retailer;
         return true;
     }
 

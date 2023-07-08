@@ -15,7 +15,7 @@ const OptionsCard = ({text, button1, button2, path1, path2}) => {
   }
 
   return (
-    <div className={styles.OptionsCard_container}>
+    <div className={styles.card_container}>
         <Typography variant='h4'>{text}</Typography>
         <div className={styles.button_container}>
             <Button size="large" variant='contained' onClick={handleClick1}>{button1}</Button>
