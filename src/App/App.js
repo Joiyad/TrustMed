@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Error404, Home, ManufacturerRegistrationForm, ProductRegistrationForm, RetailerRegistrationForm, VerificationForm } from '../pages';
+import { BuyProduct, Error404, Home, Manufacturer,
+   ManufacturerRegistrationForm, ProductRegistrationForm, 
+   Retailer, 
+   RetailerRegistrationForm, VerificationForm } from '../pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Web3 from 'web3'
 import detectEthereumProvider from '@metamask/detect-provider'
@@ -48,10 +51,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
-          <Route exact path="/verify" element={<VerificationForm web3Api={web3Api} account={account}/>} />
-          <Route exact path="/super-admin" element={<ManufacturerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
-          <Route exact path="/register" element={<RetailerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/verify-product" element={<VerificationForm web3Api={web3Api} account={account}/>} />
+          <Route exact path="/add-manufacturer" element={<ManufacturerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/manufacturer" element={<Manufacturer isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
+          <Route exact path="/retailer" element={<Retailer isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
           <Route exact path="/add-product" element={<ProductRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/add-retailer" element={<RetailerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/buy-product" element={<BuyProduct isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>

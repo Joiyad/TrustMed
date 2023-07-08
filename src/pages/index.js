@@ -1,6 +1,9 @@
 export {default as Home} from './Home';
 export {default as VerificationForm} from './VerificationForm';
+export {default as Manufacturer} from './Manufacturer';
 export {default as ManufacturerRegistrationForm} from './ManufacturerRegistrationForm';
+export {default as Retailer} from './Retailer';
 export {default as RetailerRegistrationForm} from './RetailerRegistrationForm';
+export {default as BuyProduct} from './BuyProduct';
 export {default as ProductRegistrationForm} from './ProductRegistrationForm';
 export {default as Error404} from './Error';

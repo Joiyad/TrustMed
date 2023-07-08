@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Styles.module.scss";
 import { Button, Typography } from "@mui/material";
 import { Navbar } from "../../components";
@@ -15,11 +15,10 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
     }
     else{
       const checkAccount = async() => {
-        const {web3, contract} = web3Api;
-        const superAdmin = await contract.isSuperAdmin({from: account});
+        const {contract} = web3Api;
         console.log(account);
         if(await contract.isSuperAdmin({from: account})){
-          navigate("/super-admin");
+          navigate("/add-manufacturer");
         }
         else if(await contract.isManufacturer({from: account})){
           navigate("/manufacturer");
@@ -27,7 +26,7 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
         else if(await contract.isRetailer({from: account})){
           navigate("/retailer");
         }
-        else navigate("/register");
+        else navigate("/add-retailer");
       }
       account && checkAccount();
     }
@@ -50,7 +49,7 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
             <br />
             <div className={styles.button_container}>
               <Button size="large" variant="contained" onClick={handleRegister}>Register</Button>
-              <Link to="/verify"><Button size="large" variant="outlined">Verify Product</Button></Link>
+              <Link to="/verify-product"><Button size="large" variant="outlined">Verify Product</Button></Link>
             </div>
           </div>
         </div>

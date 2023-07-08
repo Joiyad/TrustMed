@@ -18,7 +18,7 @@ const ProductRegistrationForm = ({isConnected, connectWallet, account, web3Api})
     if (account === null)
       window.alert("address is invalid, Reconnect to Metamask");
     else {
-      web3Api.contract.generateCode(account, code, brand, model, description, manufName, manufLocation, manufTimestamp);
+      web3Api.contract.generateCode(code, 1, brand, model, description, manufName, manufLocation, manufTimestamp);
       console.log(code);
     }
   };
