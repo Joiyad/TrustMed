@@ -1,4 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
+const dotenv = require("dotenv");
+dotenv.config();
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -17,8 +19,8 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 
-const INFURA_API_KEY = "d1a1dd5d792848f18d7e36c464385f56";
-const SEPOLIA_PRIVATE_KEY = "9a3cc719c830caae9e2dc71cfa234db1cc62faf493c790f131e7b7c6a83b24eb";
+const INFURA_API_KEY = process.env.REACT_APP_INFURA_API_KEY;
+const SEPOLIA_PRIVATE_KEY = process.env.REACT_APP_SEPOLIA_PRIVATE_KEY;
 module.exports = {
   solidity: "0.8.4",
   networks: {

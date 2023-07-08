@@ -5,7 +5,7 @@ pragma experimental ABIEncoderV2;
 
 contract Trustmed{
     // address of owner
-    address public admin;
+    address superAdmin;
 
     // various details related to medicine from which unique code will be generated
     // data types are strictly defined for low deployment cost
@@ -30,14 +30,62 @@ contract Trustmed{
         bool isPresent;
     }
 
+    // details of manufacturer
+    struct manufacturerObj{
+        address manufacturerAddress;
+        string name;
+        string location;
+        bool isPresent;
+    }
+
     // mapping 
     mapping (string => medicineObj) medicines;
     mapping (address => retailerObj) retailers;
+    mapping (address => manufacturerObj) manufacturers;
 
     // construction for superadmin
     constructor(){
-        admin = msg.sender;
+        superAdmin = msg.sender;
     }
+
+    // modifier for manufacturers only
+    modifier onlySuperAdmin(){
+        require(manufacturers[msg.sender].manufacturerAddress == msg.sender, "only manufacturer can register product");
+        _;
+    }
+
+    // function for registering manufacturer
+    function createManufacturer(address _manufacturerAddress, string memory _name, string memory _location) public payable returns(bool){
+        if(manufacturers[_manufacturerAddress].isPresent){
+            return false;
+        }
+        manufacturerObj memory manufacturer;
+        manufacturer.manufacturerAddress = _manufacturerAddress;
+        manufacturer.name = _name;
+        manufacturer.location = _location;
+        manufacturers[_manufacturerAddress] = manufacturer;
+        return true;
+    }
+
+    // function for checking superAdmin
+    function isSuperAdmin() external view returns(bool){
+        if(superAdmin == msg.sender) return true;
+        return false;
+    }
+
+    // function for finding superAdmin
+    function getSuperAdmin() external view returns(address){
+        return superAdmin;
+    }
+
+    // function for checking manufacturer
+    function isManufacturer() external view returns(bool){
+        if(manufacturers[msg.sender].manufacturerAddress == msg.sender){
+            return true;
+        }
+        else return false;
+    }
+
 
     // function for identifying retailer
     function isRetailer() external view returns(bool){

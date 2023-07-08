@@ -1,7 +1,7 @@
 import {ethers} from 'ethers';
 import abi from './Trustmed.json'
 
-const ContractAddress = '0x2F178fcF0b73F54ec580314DEf4a41adF8049F42';
+const ContractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 const ContractAbi = abi.abi;
 
 export default function loadContract(ethereum){
