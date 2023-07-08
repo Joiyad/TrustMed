@@ -6,14 +6,12 @@ import { Navbar } from '../../components'
 const VerificationForm = ({ web3Api, account }) => {
   const [code, setCode] = useState("");
   const [productDetails, setProductDetails] = useState({});
-  // const [toShow, setToShow] = useState(false);
 
   const handleSubmit = async() => {
     const res = await web3Api.contract.getDetailsNotOwner(code);
-    // console.log(res);
-    setProductDetails(res);
+    if(res) setProductDetails(res);
+    console.log(res);
   };
-  console.log(productDetails);
 
   return (
     <>
@@ -32,6 +30,9 @@ const VerificationForm = ({ web3Api, account }) => {
         >
           Submit
         </Button>
+      </div>
+      <div className={styles.card_container}>
+        
       </div>
     </>
   );

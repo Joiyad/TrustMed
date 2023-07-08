@@ -4,8 +4,12 @@
     justify-content: space-evenly;
 
     .animation_container{
-        max-width: 800px;
+        max-width: 700px;
         padding-top: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         @media only screen and (max-width: 1040px) {
             display: none;

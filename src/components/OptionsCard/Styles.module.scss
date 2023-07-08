@@ -1,0 +1,21 @@
+.card_container{
+    max-width: 600px;
+    padding: 5%;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  20px 20px 60px #bebebe,
+             -10px -10px 60px #ffffff;
+
+    .button_container{
+        display: flex;
+        padding-top: 20px;
+        gap: 10px;
+    }
+
+    @media only screen and (max-width: 800px) {
+        max-width: 100vw;
+        border-radius: 5px;
+        box-shadow: none;
+        margin: 20px;
+    }
+}
