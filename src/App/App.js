@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Error404, Home, RetailerRegistration, VerificationForm } from '../pages';
+import { Error404, Home, ManufacturerRegistrationForm, ProductRegistrationForm, RetailerRegistrationForm, VerificationForm } from '../pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Web3 from 'web3'
 import detectEthereumProvider from '@metamask/detect-provider'
@@ -47,9 +47,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home isConnected={isConnected} connectWallet={connectWallet} account={account}/>} />
-          <Route exact path="/verify" element={<VerificationForm />} />
-          <Route exact path="/register" element={<RetailerRegistration isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/" element={<Home isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/verify" element={<VerificationForm web3Api={web3Api} account={account}/>} />
+          <Route exact path="/super-admin" element={<ManufacturerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/register" element={<RetailerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/add-product" element={<ProductRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>

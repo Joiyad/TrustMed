@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+
+    .animation_container{
+        max-width: 800px;
+        padding-top: 5%;
+
+        @media only screen and (max-width: 1040px) {
+            display: none;
+        }
+    }
+
+    .form_container{
+        padding: 5%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+
+        @media only screen and (max-width: 1040px) {
+            height: 80vh;
+            align-items: center;
+        }
+    }
+}

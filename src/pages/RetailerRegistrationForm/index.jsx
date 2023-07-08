@@ -5,7 +5,7 @@ import { Button, TextField, Typography } from '@mui/material'
 import Lottie from 'lottie-react'
 import Animation from '../../assets/animations/107800-login-leady.json'
 
-const RetailerRegistration = ({isConnected, account, connectWallet, web3Api}) => {
+const RetailerRegistrationForm = ({isConnected, account, connectWallet, web3Api}) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
 
@@ -46,4 +46,4 @@ const RetailerRegistration = ({isConnected, account, connectWallet, web3Api}) =>
   )
 }
 
-export default RetailerRegistration
+export default RetailerRegistrationForm
