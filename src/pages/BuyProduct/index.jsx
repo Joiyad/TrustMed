@@ -39,7 +39,7 @@ const SellProduct = ({isConnected, connectWallet, account, web3Api}) => {
         </div>
         <div className={styles.form_container}>
           <TextField value={code} placeholder="Enter product code" helperText="please verify product number first" onChange={(e) => setCode(e.target.value)} />
-          <Button variant="contained" size="large" onClick={handleSubmit}>
+          <Button fullWidth={true} variant="contained" size="large" onClick={handleSubmit}>
             Submit
           </Button>
         </div>

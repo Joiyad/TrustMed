@@ -40,7 +40,7 @@ const ManufacturerRegistrationForm = ({isConnected, connectWallet, account, web3
           <TextField value={address} placeholder="Enter Metamask address..." onChange={(e) => setAddress(e.target.value)} />
           <TextField value={name} placeholder="Enter Name..." onChange={(e) => setName(e.target.value)} />
           <TextField value={location} placeholder="Enter Location..." onChange={(e) => setLocation(e.target.value)} />
-          <Button variant="contained" size="large" onClick={handleSubmit}>
+          <Button fullWidth={true} variant="contained" size="large" onClick={handleSubmit}>
             Submit
           </Button>
         </div>
