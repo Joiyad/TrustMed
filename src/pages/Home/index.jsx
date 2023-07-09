@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import Animation from '../../assets/animations/4180-blockchain-animation.json'
 import { useNavigate } from "react-router-dom";
 import { data } from "../../data/whyBlockchain";
+import Footer from "../../components/Footer";
 
 const Home = ({ isConnected, connectWallet, account, web3Api }) => {
   const navigate = useNavigate();
@@ -73,6 +74,7 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
           <FeatureCard key={id} title={title} description={description} imageLink={imageLink}/>
         ))}
       </div>
+      <Footer />
     </>
   );
 };

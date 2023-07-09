@@ -17,6 +17,7 @@ const ManufacturerRegistrationForm = ({isConnected, connectWallet, account, web3
       const res = await web3Api.contract.createManufacturer(address, name, location, {from: account});
       console.log(res);
     }
+    setAddress(''); setName(''); setLocation('');
   };
 
   return (
@@ -36,9 +37,9 @@ const ManufacturerRegistrationForm = ({isConnected, connectWallet, account, web3
           </div>
         </div>
         <div className={styles.form_container}>
-          <TextField placeholder="Enter Metamask address..." onChange={(e) => setAddress(e.target.value)} />
-          <TextField placeholder="Enter Name..." onChange={(e) => setName(e.target.value)} />
-          <TextField placeholder="Enter Location..." onChange={(e) => setLocation(e.target.value)} />
+          <TextField value={address} placeholder="Enter Metamask address..." onChange={(e) => setAddress(e.target.value)} />
+          <TextField value={name} placeholder="Enter Name..." onChange={(e) => setName(e.target.value)} />
+          <TextField value={location} placeholder="Enter Location..." onChange={(e) => setLocation(e.target.value)} />
           <Button variant="contained" size="large" onClick={handleSubmit}>
             Submit
           </Button>

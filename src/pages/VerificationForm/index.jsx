@@ -1,16 +1,10 @@
 import {
   Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
 import styles from "./Styles.module.scss";
-import { Navbar } from "../../components";
+import { DataTable, Navbar } from "../../components";
 
 const VerificationForm = ({ isConnected, connectWallet, account, web3Api }) => {
   const [code, setCode] = useState("");
@@ -55,6 +49,7 @@ const VerificationForm = ({ isConnected, connectWallet, account, web3Api }) => {
         window.alert("Product not found");
       }
     }
+    setCode('');
   };
 
   return (
@@ -67,6 +62,8 @@ const VerificationForm = ({ isConnected, connectWallet, account, web3Api }) => {
       <div className={styles.form_container}>
         <div className={styles.search_container}>
           <TextField
+            required
+            value={code}
             size="small"
             placeholder="Enter product number..."
             onChange={(e) => setCode(e.target.value)}
@@ -82,58 +79,7 @@ const VerificationForm = ({ isConnected, connectWallet, account, web3Api }) => {
         </div>
         {showDetails && (
           <div className={styles.table_container}>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableBody>
-                  <TableRow>
-                    <TableCell variant="head">Code</TableCell>
-                    <TableCell>{code}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Brand</TableCell>
-                    <TableCell>{productDetails.brand}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Model</TableCell>
-                    <TableCell>{productDetails.model}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Manufacturer name</TableCell>
-                    <TableCell>{productDetails.manufName}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Manufacturer Location</TableCell>
-                    <TableCell>{productDetails.manufLocation}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">
-                      Manufacturing Timestamp
-                    </TableCell>
-                    <TableCell>{productDetails.manufTimestamp}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Owner Address</TableCell>
-                    <TableCell>{ownerDetails.address}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Owner Name</TableCell>
-                    <TableCell>
-                      {ownerDetails.name
-                        ? ownerDetails.name
-                        : productDetails.manufName}
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell variant="head">Owner Location</TableCell>
-                    <TableCell>
-                      {ownerDetails.location
-                        ? ownerDetails.location
-                        : productDetails.manufLocation}
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <DataTable data1={productDetails} data2={ownerDetails} />
           </div>
         )}
       </div>
