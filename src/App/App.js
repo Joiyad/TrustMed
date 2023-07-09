@@ -35,12 +35,11 @@ function App() {
     else{
       console.log("Please install the Metamask");
     }
-    console.log(contract);
   };
 
   useEffect(() => {
     const getAccount = async() => {
-      const {web3, contract} = web3Api;
+      const {web3} = web3Api;
       const accounts = await web3.eth.getAccounts();
       setAccount(accounts[0]);
     }
