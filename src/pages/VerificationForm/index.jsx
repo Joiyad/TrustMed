@@ -11,7 +11,6 @@ const VerificationForm = ({ isConnected, connectWallet, account, web3Api }) => {
   const [productDetails, setProductDetails] = useState({});
   const [ownerDetails, setOwnerDetails] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
-  const [valid, setValid] = useState();
 
   const copyProductDetails = (data) => {
     const obj = {

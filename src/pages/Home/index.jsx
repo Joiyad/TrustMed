@@ -18,7 +18,6 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
     else{
       const checkAccount = async() => {
         const {contract} = web3Api;
-        console.log(account);
         if(await contract.isSuperAdmin({from: account})){
           navigate("/add-manufacturer");
         }

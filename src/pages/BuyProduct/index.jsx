@@ -14,7 +14,8 @@ const SellProduct = ({isConnected, connectWallet, account, web3Api}) => {
     else {
       if(await web3Api.contract.isProduct(code)){
         const res = await web3Api.contract.makeRequest(code, {from: account});
-        console.log(res);
+        if(res) window.alert("request submitted successfully");
+        else window.alert("requst submission unsuccessful, try again");
       }
       else window.alert("Product does not exist");
     }

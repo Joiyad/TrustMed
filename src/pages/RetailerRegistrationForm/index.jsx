@@ -4,10 +4,12 @@ import styles from './Styles.module.scss'
 import { Button, TextField, Typography } from '@mui/material'
 import Lottie from 'lottie-react'
 import Animation from '../../assets/animations/107800-login-leady.json'
+import { useNavigate } from 'react-router-dom'
 
 const RetailerRegistrationForm = ({isConnected, account, connectWallet, web3Api}) => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
+  const navigate = useNavigate();
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -23,7 +25,10 @@ const RetailerRegistrationForm = ({isConnected, account, connectWallet, web3Api}
       if(name === '' || location === '') window.alert('Fill all the fields');
       else{ 
         const res = await web3Api.contract.createRetailer(account, name, location);
-        if(res) window.alert("Retailer registered successfully");
+        if(res) {
+          window.alert("Retailer registered successfully");
+          navigate("/retailer");
+        }
         else window.alert("retailer already exists");
       }
     }
