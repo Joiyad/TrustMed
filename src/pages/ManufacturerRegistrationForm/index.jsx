@@ -11,11 +11,14 @@ const ManufacturerRegistrationForm = ({isConnected, connectWallet, account, web3
   const [location, setLocation] = useState('');
 
   const handleSubmit = async() => {
-    if (account === null)
-      window.alert("address is invalid, Reconnect to Metamask");
+    if (account === null) window.alert("address is invalid, Reconnect to Metamask");
     else {
-      const res = await web3Api.contract.createManufacturer(address, name, location, {from: account});
-      console.log(res);
+      if(address === '' || name === '' || location === '') window.alert("Fill all the fields");
+      else{ 
+        const res = await web3Api.contract.createManufacturer(address, name, location, {from: account});
+        if(res) window.alert("Manufacturer registed");
+        else window.alert("Manufacturer already exists");
+      }
     }
     setAddress(''); setName(''); setLocation('');
   };

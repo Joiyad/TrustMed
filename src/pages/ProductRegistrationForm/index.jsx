@@ -14,12 +14,15 @@ const ProductRegistrationForm = ({isConnected, connectWallet, account, web3Api})
   const [manufLocation, setManufLocation] = useState('');
   const [manufTimestamp, setManufTimestamp] = useState('');
 
-  const handleSubmit = () => {
-    if (account === null)
-      window.alert("address is invalid, Reconnect to Metamask");
+  const handleSubmit = async() => {
+    if (account === null) window.alert("address is invalid, Reconnect to Metamask");
     else {
-      web3Api.contract.registerProduct(code, 1, brand, model, description, manufName, manufLocation, manufTimestamp);
-      console.log(code);
+      if(code === '' || brand === '' || model === '' || description === '' || manufName === '' || manufLocation === '' || manufTimestamp === '') window.alert("Fill all the fields.")
+      else{ 
+        const res = await web3Api.contract.registerProduct(code, 1, brand, model, description, manufName, manufLocation, manufTimestamp);
+        if(res) window.alert("Product registered");
+        else window.alert("Product already exists.")
+      }
     }
     setCode(''); setBrand(''); setModel(''); setDescription(''); setManufName(''); setManufLocation(''); setManufTimestamp('');
   };
