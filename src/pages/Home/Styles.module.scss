@@ -25,3 +25,11 @@
         }
     }
 }
+
+.card_group{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    padding: 50px;
+}

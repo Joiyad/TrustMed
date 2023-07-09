@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BuyProduct, Error404, Home, Manufacturer,
    ManufacturerRegistrationForm, ProductRegistrationForm, 
+   RequestDetails, 
    Retailer, 
    RetailerRegistrationForm, VerificationForm } from '../pages';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -58,6 +59,7 @@ function App() {
           <Route exact path="/add-product" element={<ProductRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="/add-retailer" element={<RetailerRegistrationForm isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="/buy-product" element={<BuyProduct isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
+          <Route exact path="/requests" element={<RequestDetails isConnected={isConnected} connectWallet={connectWallet} account={account} web3Api={web3Api}/>} />
           <Route exact path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
