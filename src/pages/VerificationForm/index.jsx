@@ -11,6 +11,7 @@ const VerificationForm = ({ isConnected, connectWallet, account, web3Api }) => {
   const [productDetails, setProductDetails] = useState({});
   const [ownerDetails, setOwnerDetails] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [valid, setValid] = useState();
 
   const copyProductDetails = (data) => {
     const obj = {
@@ -62,7 +63,7 @@ const VerificationForm = ({ isConnected, connectWallet, account, web3Api }) => {
       <div className={styles.form_container}>
         <div className={styles.search_container}>
           <TextField
-            required
+            required={true}
             value={code}
             size="small"
             placeholder="Enter product number..."

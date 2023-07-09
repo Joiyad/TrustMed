@@ -17,11 +17,15 @@ const RetailerRegistrationForm = ({isConnected, account, connectWallet, web3Api}
     setLocation(e.target.value);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if(account === null) window.alert('address is invalid, Reconnect to Metamask');
     else{
-      web3Api.contract.createRetailer(account, name, location);
-      console.log(name+location);
+      if(name === '' || location === '') window.alert('Fill all the fields');
+      else{ 
+        const res = await web3Api.contract.createRetailer(account, name, location);
+        if(res) window.alert("Retailer registered successfully");
+        else window.alert("retailer already exists");
+      }
     }
     setName(''); setLocation('');
   }
