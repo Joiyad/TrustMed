@@ -6,15 +6,17 @@ import Lottie from "lottie-react";
 import Animation from "../../assets/animations/19602-contract.json";
 
 const SellProduct = ({isConnected, connectWallet, account, web3Api}) => {
-  const [address, setAddress] = useState('');
   const [code, setCode] = useState('');
 
   const handleSubmit = async() => {
     if (account === null)
       window.alert("address is invalid, Reconnect to Metamask");
     else {
-      const res = await web3Api.contract.transferOwnership(code, address, {from: account});
-      console.log(res);
+      if(await web3Api.contract.isProduct(code)){
+        const res = await web3Api.contract.makeRequest(code, {from: account});
+        console.log(res);
+      }
+      else window.alert("Product does not exist");
     }
   };
 
@@ -35,8 +37,7 @@ const SellProduct = ({isConnected, connectWallet, account, web3Api}) => {
           </div>
         </div>
         <div className={styles.form_container}>
-          <TextField placeholder="Enter product code" onChange={(e) => setCode(e.target.value)} />
-          <TextField placeholder="Enter Metamask address..." helperText="Address of new Owner" onChange={(e) => setAddress(e.target.value)} />
+          <TextField placeholder="Enter product code" helperText="please verify product number first" onChange={(e) => setCode(e.target.value)} />
           <Button variant="contained" size="large" onClick={handleSubmit}>
             Submit
           </Button>

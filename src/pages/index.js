@@ -6,4 +6,5 @@ export {default as Retailer} from './Retailer';
 export {default as RetailerRegistrationForm} from './RetailerRegistrationForm';
 export {default as BuyProduct} from './BuyProduct';
 export {default as ProductRegistrationForm} from './ProductRegistrationForm';
+export {default as RequestDetails} from './RequestDetails';
 export {default as Error404} from './Error';

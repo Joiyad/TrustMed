@@ -1,0 +1,11 @@
+.card_container{
+    max-width: 300px;
+    padding: 3%;
+    border-radius: 20px;
+    background: #EFEFEF;
+
+    .image_container{
+        display: flex;
+        justify-content: center;
+    }
+}

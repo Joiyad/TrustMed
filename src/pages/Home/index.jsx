@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./Styles.module.scss";
 import { Button, Typography } from "@mui/material";
-import { Navbar } from "../../components";
+import { FeatureCard, Navbar } from "../../components";
 import Lottie from "lottie-react";
 import Animation from '../../assets/animations/4180-blockchain-animation.json'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { data } from "../../data/whyBlockchain";
 
 const Home = ({ isConnected, connectWallet, account, web3Api }) => {
   const navigate = useNavigate();
@@ -65,6 +66,12 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
         <div className={styles.lottie_container}>
           <Lottie animationData={Animation} />
         </div>
+      </div>
+      <Typography variant="h2" sx={{textAlign:'center', paddingY:'100px'}}>Why Blockchain</Typography>
+      <div className={styles.card_group}>
+        {data.map(({id, title, description, imageLink}) => (
+          <FeatureCard key={id} title={title} description={description} imageLink={imageLink}/>
+        ))}
       </div>
     </>
   );
