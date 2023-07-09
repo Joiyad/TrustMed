@@ -48,13 +48,13 @@ const Navbar = ({ isConnected, connectWallet, account }) => {
             }}
           >
             <Toolbar>
-              <Box>
+              <Box sx={{flexGrow:{xs:1, md:0}}}>
                 <img alt="logo" src={Trustmed} width="40px" />
               </Box>
               <Typography
                 variant="h5"
                 component="div"
-                sx={{ flexGrow: 1, color: "#F739E1" }}
+                sx={{ flexGrow: 1, color: "#F739E1", display:{xs:'none', md:'block'}}}
               >
                 Trustmed
               </Typography>
@@ -62,7 +62,7 @@ const Navbar = ({ isConnected, connectWallet, account }) => {
                 <Button variant="contained">Home</Button>
               </Link>
               {isConnected ? (
-                <Button variant="outlined" sx={{maxWidth:"400px", overflow:'hidden', fontWeight:'450'}}><Typography variant="body2">{account}</Typography></Button>
+                <Button variant="outlined" sx={{width:{xs:'100px', md:'400px'}, overflow:'hidden', fontWeight:'450'}}><Typography variant="body2">{account}</Typography></Button>
               ) : (
                 <Button
                   startIcon={<img alt="logo" src={Metamask} width="20px"/>}

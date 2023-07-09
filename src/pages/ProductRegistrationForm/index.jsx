@@ -47,7 +47,7 @@ const ProductRegistrationForm = ({isConnected, connectWallet, account, web3Api})
           <TextField value={manufName} placeholder="Enter manufacturer name..." onChange={(e) => setManufName(e.target.value)} />
           <TextField value={manufLocation} placeholder="Enter manufacturer location..." onChange={(e) => setManufLocation(e.target.value)} />
           <TextField value={manufTimestamp} placeholder="Enter manuf.time (HH:MM)..." onChange={(e) => setManufTimestamp(e.target.value)} />
-          <Button variant="contained" size="large" onClick={handleSubmit}>
+          <Button fullWidth={true} variant="contained" size="large" onClick={handleSubmit}>
             Submit
           </Button>
         </div>

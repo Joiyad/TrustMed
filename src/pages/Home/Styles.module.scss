@@ -7,6 +7,10 @@
         max-width: 800px;
         padding-top: 5%;
 
+        @media screen and (max-width: 900px){
+            padding-top: 20%;
+        }
+
         .text_section{
             padding: 5%;
         }
@@ -14,6 +18,10 @@
         .button_container{
             display: flex;
             gap: 20px;
+
+            @media only screen and (max-width: 900px) {
+                justify-content: center;
+            }
         }
     }
 
