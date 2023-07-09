@@ -52,7 +52,7 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
       <div className={styles.container}>
         <div className={styles.text_container}>
           <div className={styles.text_section}>
-            <Typography sx={{textAlign:{xs:'center', md:'left'}, fontSize:{xs:'44px', md:'52px', lg:'56px'}}}>Blockchain Powered Anti Counterfeit System</Typography>
+            <Typography sx={{textAlign:{xs:'center', md:'left'}, fontSize:{xs:'44px', md:'50px', lg:'50px'}}}>Blockchain Powered Anti Counterfeit System</Typography>
             <br />
             <Typography variant="h5" sx={{color:'#7F7E7F', textAlign:{xs:'center', md:'left'}}}>Transforming the Fight Against Counterfeiting: Empowering Brands with Blockchain </Typography>
             <br />
@@ -67,7 +67,7 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
           <Lottie animationData={Animation} />
         </div>
       </div>
-      <Typography variant="h2" sx={{textAlign:'center', paddingTop:{xs:'200px', md:'100px'}, fontSize:{xs:'44px', md:'52px', lg:'56px'}}}>Why Blockchain</Typography>
+      <Typography variant="h2" sx={{textAlign:'center', paddingTop:{xs:'200px', md:'100px'}, fontSize:{xs:'44px', md:'52px', lg:'50px'}}}>Why Blockchain</Typography>
       <div className={styles.card_group}>
         {data.map(({id, title, description, imageLink}) => (
           <FeatureCard key={id} title={title} description={description} imageLink={imageLink}/>
