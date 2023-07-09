@@ -23,6 +23,7 @@ const RetailerRegistrationForm = ({isConnected, account, connectWallet, web3Api}
       web3Api.contract.createRetailer(account, name, location);
       console.log(name+location);
     }
+    setName(''); setLocation('');
   }
 
   return (
@@ -37,8 +38,8 @@ const RetailerRegistrationForm = ({isConnected, account, connectWallet, web3Api}
             </div>
         </div>
         <div className={styles.form_container}>
-          <TextField placeholder='Enter your name...' onChange={handleName}/>
-          <TextField placeholder='Enter your location...' onChange={handleLocation}/>
+          <TextField value={name} placeholder='Enter your name...' onChange={handleName}/>
+          <TextField value={location} placeholder='Enter your location...' onChange={handleLocation}/>
           <Button variant='contained' size='large' onClick={handleSubmit}>Submit</Button>
         </div>
       </div>

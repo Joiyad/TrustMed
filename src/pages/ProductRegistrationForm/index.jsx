@@ -21,6 +21,7 @@ const ProductRegistrationForm = ({isConnected, connectWallet, account, web3Api})
       web3Api.contract.registerProduct(code, 1, brand, model, description, manufName, manufLocation, manufTimestamp);
       console.log(code);
     }
+    setCode(''); setBrand(''); setModel(''); setDescription(''); setManufName(''); setManufLocation(''); setManufTimestamp('');
   };
 
   return (
@@ -39,13 +40,13 @@ const ProductRegistrationForm = ({isConnected, connectWallet, account, web3Api})
           </div>
         </div>
         <div className={styles.form_container}>
-          <TextField placeholder="Enter product code..." onChange={(e) => setCode(e.target.value)} />
-          <TextField placeholder="Enter product brand..." onChange={(e) => setBrand(e.target.value)} />
-          <TextField placeholder="Enter product model..." onChange={(e) => setModel(e.target.value)} />
-          <TextField placeholder="Enter product description..." onChange={(e) => setDescription(e.target.value)} />
-          <TextField placeholder="Enter manufacturer name..." onChange={(e) => setManufName(e.target.value)} />
-          <TextField placeholder="Enter manufacturer location..." onChange={(e) => setManufLocation(e.target.value)} />
-          <TextField placeholder="Enter manuf.time (HH:MM)..." onChange={(e) => setManufTimestamp(e.target.value)} />
+          <TextField value={code} placeholder="Enter product code..." onChange={(e) => setCode(e.target.value)} />
+          <TextField value={brand} placeholder="Enter product name..." onChange={(e) => setBrand(e.target.value)} />
+          <TextField value={model} placeholder="Enter product model..." onChange={(e) => setModel(e.target.value)} />
+          <TextField value={description} placeholder="Enter product description..." onChange={(e) => setDescription(e.target.value)} />
+          <TextField value={manufName} placeholder="Enter manufacturer name..." onChange={(e) => setManufName(e.target.value)} />
+          <TextField value={manufLocation} placeholder="Enter manufacturer location..." onChange={(e) => setManufLocation(e.target.value)} />
+          <TextField value={manufTimestamp} placeholder="Enter manuf.time (HH:MM)..." onChange={(e) => setManufTimestamp(e.target.value)} />
           <Button variant="contained" size="large" onClick={handleSubmit}>
             Submit
           </Button>

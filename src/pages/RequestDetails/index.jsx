@@ -5,7 +5,7 @@ import { Button, Typography } from "@mui/material";
 
 const RequestDetails = ({ isConnected, account, connectWallet, web3Api }) => {
   const [requests, setRequests] = useState(null);
-  const [isRequestPresent, setIsRequestPresent] = useState(false);
+  const [isRequestPreset, setIsRequestPresent] = useState(true);
 
   const seeRequests = async () => {
     if (account === null)
@@ -13,13 +13,11 @@ const RequestDetails = ({ isConnected, account, connectWallet, web3Api }) => {
     else {
       const res = web3Api.contract.getRequest({ from: account });
       res.then((response) => {
-        if (response[1] !== "") {
+        if(response[1] !== ""){ 
           setIsRequestPresent(true);
           setRequests(response);
         } else setIsRequestPresent(false);
       });
-      console.log(res);
-      console.log(requests);
     }
   };
 
@@ -27,12 +25,14 @@ const RequestDetails = ({ isConnected, account, connectWallet, web3Api }) => {
     await web3Api.contract.acceptRequest(requests[0], requests[2], {
       from: account,
     });
-    if (requests[0] === "") setIsRequestPresent(false);
+    setRequests(null);
+    setIsRequestPresent(false);
   };
 
   const handleDecline = async () => {
     await web3Api.contract.declineRequest();
-    if (requests[0] === "") setIsRequestPresent(false);
+    setRequests(null);
+    setIsRequestPresent(false);
   };
 
   return (
@@ -46,7 +46,8 @@ const RequestDetails = ({ isConnected, account, connectWallet, web3Api }) => {
         <Button size="large" variant="contained" onClick={seeRequests}>
           See all requests
         </Button>
-        {isRequestPresent ? (
+        <Typography>You will see all incoming requests of buy here</Typography>
+        {requests && (
           <div className={styles.card_container}>
             <Typography variant="h4">Pending Requests</Typography>
             <div className={styles.request_container}>
@@ -63,9 +64,8 @@ const RequestDetails = ({ isConnected, account, connectWallet, web3Api }) => {
               </Button>
             </div>
           </div>
-        ) : (
-          <h2>No Requests</h2>
         )}
+        {isRequestPreset ? null : <h2>No requests</h2>}
       </div>
     </>
   );
