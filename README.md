@@ -1,5 +1,7 @@
 # Trustmed: An Anti Counterfeit System Using Blockchain
 
+![Trustmed](https://res.cloudinary.com/dvjbswt50/image/upload/v1688918469/trustmed-home_navy7m.png)
+
 # Table of Contents
 + [About](#description)
 + [Why Blockchain](#why_blockchain)
