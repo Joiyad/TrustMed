@@ -63,7 +63,7 @@ contract Trustmed{
     }
 
     // function for registering manufacturer
-    function createManufacturer(address _manufacturerAddress, string memory _name, string memory _location) public payable returns(bool){
+    function createManufacturer(address _manufacturerAddress, string memory _name, string memory _location) public returns(bool){
         if(manufacturers[_manufacturerAddress].isPresent){
             return false;
         }
@@ -98,7 +98,7 @@ contract Trustmed{
     }
 
     // function for registration of product
-    function registerProduct(string memory _code, uint _status, string memory _brand, string memory _model, string memory _description, string memory _manufName, string memory _manufLocation, string memory _manufTimestamp) public payable returns(uint){
+    function registerProduct(string memory _code, uint _status, string memory _brand, string memory _model, string memory _description, string memory _manufName, string memory _manufLocation, string memory _manufTimestamp) public returns(uint){
         productObj storage newProduct = products[_code];
         newProduct.brand = _brand;
         newProduct.status = _status;
@@ -120,7 +120,7 @@ contract Trustmed{
     }
 
     // function for making request
-    function makeRequest(string memory _code) public payable returns(bool){
+    function makeRequest(string memory _code) public returns(bool){
         requestObj storage newRequest = requests[products[_code].owner];
         newRequest.code = _code;
         newRequest.newOwner = msg.sender;
@@ -133,7 +133,7 @@ contract Trustmed{
     }
 
     // // function for accepting request
-    function acceptRequest(string memory _code, address _newOwner) public payable returns(bool) {
+    function acceptRequest(string memory _code, address _newOwner) public returns(bool) {
         products[_code].owner = _newOwner;
         products[_code].allOwners.push(_newOwner);
         delete requests[msg.sender];
@@ -141,7 +141,7 @@ contract Trustmed{
     }
 
     // function for declining request
-    function declineRequest() public payable returns(bool){
+    function declineRequest() public returns(bool){
         delete requests[msg.sender];
         return true;
     }
@@ -157,7 +157,7 @@ contract Trustmed{
     }
 
     // function for creating a retailer  
-    function createRetailer(address _retailerAddress, string memory _name, string memory _location) public payable returns(bool){
+    function createRetailer(address _retailerAddress, string memory _name, string memory _location) public returns(bool){
         if(retailers[_retailerAddress].isPresent){
             return false;
         }
@@ -176,7 +176,7 @@ contract Trustmed{
     }
 
     // function for transferring ownership
-    function transferOwnership(string memory _code, address _newOwner) public payable returns(uint) {
+    function transferOwnership(string memory _code, address _newOwner) public returns(uint) {
         if(products[_code].owner == msg.sender){
             products[_code].owner = _newOwner;
             return 1;
@@ -185,7 +185,7 @@ contract Trustmed{
     }
 
     // function for initial owner
-    function initialOwner(string memory _code) public payable returns(bool) {
+    function initialOwner(string memory _code) public returns(bool) {
         products[_code].owner = msg.sender;
         products[_code].allOwners.push(msg.sender);
         return true;
