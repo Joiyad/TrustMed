@@ -25,7 +25,7 @@ const Home = ({ isConnected, connectWallet, account, web3Api }) => {
           navigate("/manufacturer");
         }
         else if(await contract.isRetailer({from: account})){
-          navigate("/add-retailer");
+          navigate("/retailer");
         }
         else navigate("/add-retailer");
       }
