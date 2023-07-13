@@ -13,6 +13,7 @@
 ## About <a name="description"></a>
 + How can you tell if a thing you are buying is real in the modern world?
 + The supply chain has been using RFID (Radio Frequency IDentification) technology for anti-counterfeiting measures for more than a decade.
++ This project proposes an idea of a new supply chain system using blockchain to reduce counterfeit products.
 
 ### Why blockchain? <a name="why_blockchain"></a>
 + Immutability in decentralized systems ensures that transaction records and product information cannot be tampered with, strengthening the fight against counterfeiting.
