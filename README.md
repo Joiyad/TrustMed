@@ -41,7 +41,7 @@ Steps:
 + installing the dependencies ``` cd Trustmed ```
 + ``` npm install ```
 + Create a .env file and make three variables REACT_APP_CONTRACT_ADDRESS, REACT_APP_INFURA_API_KEY, REACT_APP_SEPOLIA_PRIVATE_KEY.
-+ Open metamask and first connect sepolia testnet and then set REACT_APP_SEPOLIA_PRIVATE_KEY your private key.
++ Open metamask and first connect sepolia testnet and then set REACT_APP_SEPOLIA_PRIVATE_KEY equal to your private key.
 + Go to infura and register to get INFURA API KEY and set REACT_APP_INFURA_API_KEY.
 + Deploy the smart contract using hardhat: ```npx hardhat compile``` and ```npx hardhat run --network sepolia scripts/deploy.js```. if it runs successfully, you will get contract address. set REACT_APP_CONTRACT_ADDRESS variable with this value.
 + All set, run ```npm start```
