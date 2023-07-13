@@ -6,6 +6,7 @@
 + [About](#description)
 + [Why Blockchain](#why_blockchain)
 + [Technologies Used](#built_with)
++ [Getting Started](#getting_started)
 + [Limitations](#limitations)
 + [Future Scope](#future_scope)
 
@@ -31,6 +32,20 @@ Blockchain:
 + Hardhat
 + Metamask
 
+## Getting Started <a name="getting_started"></a>
+Prerequisites:
++ node@16.13.0 version installed
+
+Steps:
++ clone the repository ``` $ git clone https://github.com/Joiyad/TrustMed.git ```
++ installing the dependencies ``` cd Trustmed ```
++ ``` npm install ```
++ Create a .env file and make three variables REACT_APP_CONTRACT_ADDRESS, REACT_APP_INFURA_API_KEY, REACT_APP_SEPOLIA_PRIVATE_KEY.
++ Open metamask and first connect sepolia testnet and then set REACT_APP_SEPOLIA_PRIVATE_KEY your private key.
++ Go to infura and register to get INFURA API KEY and set REACT_APP_INFURA_API_KEY.
++ Deploy the smart contract using hardhat: ```npx hardhat compile``` and ```npx hardhat run --network sepolia scripts/deploy.js```. if it runs successfully, you will get contract address. set REACT_APP_CONTRACT_ADDRESS variable with this value.
++ All set, run ```npm start```
+ 
 ## Limitations <a name="limitations"></a>
 + To check the product information, the user needs a QR code scanner.
 + Currently, dependent on Organization to register with us.
